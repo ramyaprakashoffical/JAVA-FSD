@@ -1,0 +1,447 @@
+package com.tax;
+
+import java.util.ArrayList;
+import java.util.*;
+import java.util.Scanner;
+class UserInfo{
+	String Username;
+	String Password;
+	public String getUsername() {
+		return Username;
+	}
+	public void setUsername(String username) {
+		Username = username;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	
+	
+	
+} class Property {
+    private int id;
+    private double baseValue;
+    private double builtUpArea;
+    private int age;
+    private boolean inCity;
+    private double tax;
+    
+	public Property(int id, double baseValue, double builtUpArea, int age, boolean inCity, double tax) {
+		super();
+		this.id = id;
+		this.baseValue = baseValue;
+		this.builtUpArea = builtUpArea;
+		this.age = age;
+		this.inCity = inCity;
+		this.tax = tax;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getBaseValue() {
+		return baseValue;
+	}
+
+	public void setBaseValue(double baseValue) {
+		this.baseValue = baseValue;
+	}
+
+	public double getBuiltUpArea() {
+		return builtUpArea;
+	}
+
+	public void setBuiltUpArea(double builtUpArea) {
+		this.builtUpArea = builtUpArea;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public boolean isInCity() {
+		return inCity;
+	}
+
+	public void setInCity(boolean inCity) {
+		this.inCity = inCity;
+	}
+
+	public double getTax() {
+		return tax;
+	}
+
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
+
+    // Constructor, getters, and setters for Property class
+}
+
+class Vehicle {
+    private int id;
+    private String brand;
+    private String regNumber;
+    private double maxVelocity;
+    private int capacity;
+    private int vehicleType;
+    private int vehiclechoice ;// 1 for Petrol, 2 for Diesel, 3 for CNG/LPG
+    private double tax;
+    
+	public Vehicle(int id, String brand, String regNumber, double maxVelocity, int capacity, int vehicleType, int vehiclechoice ,
+			double tax) {
+		super();
+		this.id = id;
+		this.brand = brand;
+		this.regNumber = regNumber;
+		this.maxVelocity = maxVelocity;
+		this.capacity = capacity;
+		this.vehicleType = vehicleType;
+		this.vehiclechoice = vehiclechoice;
+		this.tax = tax;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getRegNumber() {
+		return regNumber;
+	}
+
+	public void setRegNumber(String regNumber) {
+		this.regNumber = regNumber;
+	}
+
+	public double getMaxVelocity() {
+		return maxVelocity;
+	}
+
+	public void setMaxVelocity(double maxVelocity) {
+		this.maxVelocity = maxVelocity;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public int getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(int vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public double getTax() {
+		return tax;
+	}
+
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
+    
+    
+    // Constructor, getters, and setters for Vehicle class
+}
+
+
+
+		public double calculatePropertyTax() {
+	      double tax;
+	      if (isInCity) {
+	          tax = (builtuparea * ageOfConstruction * baseValueofland) + (0.5 * baseValueofland);
+	      } else {
+	          tax = builtuparea * ageOfConstruction * baseValueofland;
+	      }
+	      System.out.println (tax);
+	  }
+
+	  
+	  public void DisplayProperty() {
+	System.out.println("List of Properties:");
+        for (int i = 0; i < properties.size(); i++) {
+            Property property = properties.get(i);
+            System.out.println("Property ID:" + property.getId());
+            System.out.println("Base Value of Land:" + property.getBaseValue());
+            System.out.println("Built-Up Area: " + property.getBuiltUpArea());
+            System.out.println("Age of Land (Years): " + property.getAge());
+            System.out.println("Located in City: " + (property.isInCity() ? "Yes" : "No"));
+            System.out.println("Property Tax: " + property.getTax());
+            System.out.println("-------------------------------");
+        }
+
+	}
+
+	
+
+		public double calculateVehicleTax() {
+	      double tax = 0;
+	      switch (vehicleChoice) {
+	          case 1:
+	              tax = maxVelocity + capacity + (0.1 * purchaseCost);
+	              break;
+	          case 2:
+	              tax = maxVelocity + capacity + (0.11 * purchaseCost);
+	              break;
+	          case 3:
+	              tax = maxVelocity + capacity + (0.12 * purchaseCost);
+	              break;
+	      }
+	      return tax;
+	  }
+
+	  
+	  public void DisplayVehicle() {
+	      return "Registration Number: " + registrationNumber + "\nBrand: " + brand + "\nPurchase Cost: " + purchaseCost +
+	              "\nMax Velocity: " + maxVelocity + "\nCapacity: " + capacity + "\nVehicle Type: " + vehicleChoice;
+	  }
+	}
+		
+
+
+public class TaxMain {
+public static void main(String[] args) {
+	 List<Property> property = new ArrayList<>();
+     List<Vehicle> vehicles = new ArrayList<>();
+	System.out.println("+------------------------------------------+");
+	System.out.println("|     WELCOME TO TAX APPLICATION APP       |");
+	System.out.println("+------------------------------------------+");
+	System.out.println(" PLEASE LOGIN TO CONTINUE ");
+    UserInfo user = new UserInfo();
+    Scanner scin =  new Scanner(System.in);
+	user.setUsername("admin");
+	user.setPassword("admin@123");
+	System.out.print("Enter username : ");
+	String usernames = scin.nextLine();
+	System.out.print("Enter password : ");
+	String pswd = scin.nextLine();	
+	
+	
+	int excit;
+	if(usernames.equals("admin") && pswd.equals("admin@123") ) {
+		do {
+			System.out.println("1.  Property Tax \n" 
+					+ "2.  Vechile Tax \n"
+					+ "3.  Total \n"
+					+ "4.  Exit \n" );
+			int operations = scin.nextInt();
+			switch(operations) {
+			case 1 :
+				System.out.println();
+				System.out.println("1. Add Property Deatils\n "
+						+ "2.  Calculate Property Tax\n"
+						+ "3.  Display All Property\n"
+						+ "4.  Back to Main Menu");
+				int operations1 = scin.nextInt();
+				switch(operations1) {
+				case 1 :
+					System.out.println("Add Property Deatils");
+					Scanner scanner = new Scanner(System.in);
+					System.out.print("Enter Base Value of Land: ");
+					double baseValueOfLand = scanner.nextDouble();
+					System.out.print("Is in City (yes/no): ");
+					String isInCityInput = scanner.next();
+					boolean isInCity = isInCityInput.equals("Y") || isInCityInput.equals("y");
+					System.out.print("Enter Age of Construction: ");
+					int ageOfConstruction = scanner.nextInt();
+					System.out.print("Enter Built-Up Area: ");
+					double builtUpArea = scanner.nextDouble();
+			         Property property = new Property(baseValueOfLand, isInCity, ageOfConstruction, builtUpArea);
+                     properties.add(property);
+                     System.out.println("Property added successfully!");
+					break;
+				case 2 :
+					System.out.println("\nProperty Taxes Calculator:");
+                  	System.out.println("==============================");
+
+                  	for (Property prop : properties) {
+                          System.out.println(prop);
+                          System.out.println("Property Tax: " + property.calculatePropertyTax());
+                          System.out.println("==============================");
+                          }
+                  
+					break;
+				case 3 :
+					System.out.println("\nProperty Details :");
+	                      property. DisplayProperty();
+	                 
+	                  break;
+					
+				case 4 :
+					System.out.println("1.  Property Tax \n" 
+							+ "2.  Vechile Tax \n"
+							+ "3.  Total \n"
+							+ "4.  Exit \n" );
+					break;
+				}
+			
+				break;
+				
+				
+			case 2 :
+				System.out.println("1. Add Vechile Deatils\n "
+						+ "2.  Calculate Vechile Tax\n"
+						+ "3.  Display All Vechile\n"
+						+ "4.  Back to Main Menu");
+				int operations2 = scin.nextInt();
+				switch(operations2) {
+				case 1 :
+					System.out.println("Add Vechile Deatils");
+					Scanner scanner = new Scanner(System.in);
+					System.out.print("Enter Registration Number: ");
+                    String registrationNumber = scanner.next();
+                    System.out.print("Enter Brand: ");
+                    String brand = scanner.next();
+                    System.out.print("Enter Purchase Cost: ");
+                    double purchaseCost = scanner.nextDouble();
+                    System.out.print("Enter Max Velocity: ");
+                    double maxVelocity = scanner.nextDouble();
+                    System.out.print("Enter Capacity: ");
+                    int capacity = scanner.nextInt();
+
+                    Vehicle vehicle = new Vehicle(registrationNumber, brand, purchaseCost, maxVelocity, capacity, operations2);
+                    vehicles.add(vehicle);
+                    System.out.println("Vehicle added successfully!");
+					break;
+				case 2 :
+					System.out.println("\nVehicle Details and Taxes:");
+	                  for (Vehicle veh : vehicles) {
+	                      System.out.println(veh);
+	                     
+	                  }
+	                break;
+				case 3 :
+					System.out.println("Display All Vechile");
+					System.out.println("List of Vehicles:");
+	    for (int i = 0; i < vehicles.size(); i++) {
+	        Vehicle vehicle = vehicles.get(i);
+	        System.out.println("Vehicle ID: " + vehicle.getId());
+	        System.out.println("Brand: " + vehicle.getBrand());
+	        System.out.println("Registration Number: " + vehicle.getRegNumber());
+	        System.out.println("Maximum Velocity (KMPH): " + vehicle.getMaxVelocity());
+	        System.out.println("Capacity (Number of Seats): " + vehicle.getCapacity());
+	        System.out.println("Vehicle Type: " + getVehicleTypeText(vehicle.getVehicleType()));
+	        System.out.println("Purchase Cost: " + vehicle.getPurchaseCost());
+	        System.out.println("Vehicle Tax: " + vehicle.getTax());
+	        System.out.println("-------------------------------");
+	    }
+
+					
+					break;
+				case 4 :
+					System.out.println("1.  Property Tax \n" 
+							+ "2.  Vechile Tax \n"
+							+ "3.  Total \n"
+							+ "4.  Exit \n" );
+					break;
+				
+				}
+				break;
+				
+				
+				
+			case 3 :
+				System.out.println();
+				  // View and Calculate Taxes
+                // Include code to display property and vehicle details and calculate taxes (similar to previous example)
+            	System.out.println("\nProperty Details and Taxes:");
+for (Property property : properties) {
+                System.out.println("Property ID: " + property.getId());
+                System.out.println("Base Value of Land: " + property.getBaseValue());
+                System.out.println("Built-Up Area: " + property.getBuiltUpArea());
+                System.out.println("Age of Land (Years): " + property.getAge());
+                System.out.println("Located in City: " + (property.isInCity() ? "Yes" : "No"));
+                System.out.println("Property Tax: " + property.getTax());
+                System.out.println("-------------------------------");
+            }
+                }
+
+                System.out.println("\nVehicle Details and Taxes:");
+                for (Vehicle vehicle : vehicles) {
+                System.out.println("Registration Number: " + vehicle.getRegNumber());
+                System.out.println("Brand: " + vehicle.getBrand());
+                System.out.println("Maximum Velocity: " + vehicle.getMaxVelocity());
+                System.out.println("Capacity (Number of Seats): " + vehicle.getCapacity());
+                System.out.println("Vehicle Type: " + getVehicleTypeString(vehicle.getVehicleType()));
+                System.out.println("Purchase Cost: " + vehicle.getPurchaseCost());
+                System.out.println("Vehicle Tax: " + vehicle.getTax());
+                System.out.println("-------------------------------");
+            }
+double totalPropertyTax = properties.stream().mapToDouble(Property::getTax).sum();
+        double totalVehicleTax = vehicles.stream().mapToDouble(Vehicle::getTax).sum();
+        double totalTax = totalPropertyTax + totalVehicleTax;
+
+        System.out.println("Total Property Tax: " + totalPropertyTax);
+        System.out.println("Total Vehicle Tax: " + totalVehicleTax);
+        System.out.println("Total Tax Amount: " + totalTax);
+
+
+				break;
+				
+				
+			case 4 :
+				System.out.println("Thanks for using application");
+				break;
+				
+				
+			default : 
+				System.out.println(" OOPS !! INVALID OPERAIONS ");
+			
+			}
+			
+		System.out.println();
+		 Scanner scin1 =  new Scanner(System.in);
+		 excit = scin1.nextInt();
+			
+		}while(excit!=4);
+	}else {
+		System.out.println(" OOPS !! ENTER VALID USERNAME AND PASSWORD ");
+	}
+
+
+		
+
+}
+
+
+}
+
+	
+		
+		
+
+
+
+
+
+
+
